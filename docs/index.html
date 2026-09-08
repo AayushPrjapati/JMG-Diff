@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JMG-Diff: Generative Refinement for Target Speech Extraction using Joint Mixture-Guided Diffusion Priors</title>
+    <meta name="description" content="Audio demonstration and spectrogram showcase page for JMG-Diff: Generative Refinement for Target Speech Extraction using Joint Mixture-Guided Diffusion Priors.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="project-title">JMG-Diff: Generative Refinement for Target Speech Extraction</h1>
+            <p class="project-subtitle">using Joint Mixture-Guided Diffusion Priors</p>
+            
+            <div class="badges">
+                <a href="#" class="badge badge-pdf" id="btn-paper">
+                    <svg viewBox="0 0 24 24" class="icon"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V7h2v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/></svg>
+                    Paper (arXiv)
+                </a>
+                <a href="https://github.com/AayushPrjapati/JMG-Diff" target="_blank" class="badge badge-github" id="btn-github">
+                    <svg viewBox="0 0 24 24" class="icon"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    Code (GitHub)
+                </a>
+                <a href="https://colab.research.google.com/" target="_blank" class="badge badge-github" id="btn-colab" style="background-color: #f9ab00; color: white;">
+                    <svg viewBox="0 0 24 24" class="icon" fill="white"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.365.965 3.96.987 1.632.023 2.65-1.432 3.64-2.88 1.154-1.688 1.63-3.326 1.652-3.414-.037-.015-3.197-1.22-3.232-4.832-.027-3.027 2.47-4.475 2.584-4.542-1.41-2.062-3.606-2.28-4.275-2.324-1.78-.182-3.488 1.054-4.382 1.054a5.1 5.1 0 0 1-1.396-.164M15.42 4.606c.846-1.024 1.41-2.448 1.255-3.882-1.226.05-2.709.818-3.585 1.868-.783.917-1.455 2.378-1.267 3.784 1.365.106 2.75-.682 3.597-1.77"/></svg>
+                    Try in Colab
+                </a>
+
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content container">
+        <section class="section intro-section">
+            <h2>Abstract & Summary</h2>
+            <p class="abstract-text">
+                <strong>Target Speech Extraction (TSE)</strong> aims to isolate a desired speaker from a multi-talker mixture using an auxiliary enrollment cue. While discriminative models achieve high signal-to-noise ratios, they frequently introduce unnatural robotic artifacts and over-smoothing. Generative diffusion priors can restore natural speech characteristics, but unconstrained sampling suffers from speaker identity drift and severe phonetic hallucinations in silent or overlapping regions. In this work, we propose <strong>Joint Mixture-Guided Diffusion (JMG-Diff)</strong>, a training-free framework that couples discriminative extraction with region-adaptive generative refinement. Utilizing a dynamic energy mask derived from the discriminative output, our approach guides a pre-trained diffusion prior via a partitioned dual-loss: an active-region fidelity loss to anchor speaker identity, and an inactive-region mixture-envelope bound to strictly suppress hallucinations. Evaluated on the Libri2Mix benchmark, JMG-Diff achieves a state-of-the-art 3.78 DNSMOS, improvement in perceptual quality over the TFGridNet baseline. Furthermore, the dual-guidance strategy restores acoustic stability, tightly bounding linguistic hallucinations to limit word error rate degradation (yielding a competitive 5.84 percent) while preserving biometric speaker similarity (0.975), establishing a robust, training-free paradigm for high-fidelity TSE.
+            </p>
+        </section>
+
+        <section class="section system-workflow">
+            <h2>Extraction Architecture</h2>
+            <p>The system utilizes a multi-stage approach to refine speaker speech from complex mixtures:</p>
+            <div class="workflow-diagram">
+                <div class="workflow-node">
+                    <span class="node-label">Mixed Audio Input</span>
+                    <span class="node-sub">Overlapping Voices</span>
+                </div>
+                <div class="workflow-arrow">&rarr;</div>
+                <div class="workflow-node highlight">
+                    <span class="node-label">Discriminative Baseline Stage</span>
+                    <span class="node-sub">Discriminative Extraction</span>
+                </div>
+                <div class="workflow-arrow">&rarr;</div>
+                <div class="workflow-node highlight">
+                    <span class="node-label">JMG-Diff Stage</span>
+                    <span class="node-sub">Generative Refinement</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Scrolling Showcase List -->
+        <section class="section demo-section">
+            <h2>Evaluation Showcases</h2>
+            <p class="section-desc">Visual and acoustic comparison of target speaker extraction across benchmark and real-world mixtures. All cases are presented below sequentially for ease of scrolling.</p>
+            
+            <div class="showcases-list">
+                <!-- Case 1: Libri2Mix -->
+                <div class="case-block">
+                    <div class="case-header-bar">
+                        <h3>1. Libri2Mix Synthetic Benchmark</h3>
+                        <span class="case-badge">Synthetic Benchmark</span>
+                    </div>
+                    <p class="case-desc-text">A standard synthetic multi-speaker overlap test. The target speaker (s1) is separated from the overlapping voice using the reference s1 audio clip.</p>
+                    
+                    <div class="audio-grid">
+                        <div class="audio-card">
+                            <span class="audio-label">Mixture Input</span>
+                            <img src="images/case1_mix.png" alt="Libri2Mix Mixture Spectrogram" class="spec-img">
+                            <audio controls src="audio/case1_mix.wav" preload="metadata"></audio>
+                        </div>
+                        <div class="audio-card">
+                            <span class="audio-label">Reference Cue</span>
+                            <img src="images/case1_cue.png" alt="Libri2Mix Reference Spectrogram" class="spec-img">
+                            <audio controls src="audio/case1_cue.wav" preload="metadata"></audio>
+                        </div>
+                        <div class="audio-card">
+                            <span class="audio-label">Discriminative Baseline (Discriminative)</span>
+                            <img src="images/case1_disc.png" alt="Discriminative Baseline Output Spectrogram" class="spec-img">
+                            <audio controls src="audio/case1_disc.wav" preload="metadata"></audio>
+                        </div>
+                        <div class="audio-card highlight">
+                            <span class="audio-label">JMG-Diff (Generative)</span>
+                            <img src="images/case1_gen.png" alt="JMG-Diff Refined Spectrogram" class="spec-img">
+                            <audio controls src="audio/case1_gen.wav" preload="metadata"></audio>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="case-divider">
+
+                <!-- Case 2: Case S01 -->
+                <div class="case-block">
+                    <div class="case-header-bar">
+                        <h3>2. Case S01 (Real Overlap)</h3>
+                        <span class="case-badge">Real Speech</span>
+                    </div>
+                    <p class="case-desc-text">Real speech overlapping mixture. The model isolates the target speaker based on the auxiliary reference enrollment clip.</p>
+                    
+                    <div class="audio-grid">
+                        <div class="audio-card">
+                            <span class="audio-label">Mixture Input</span>
+                            <img src="images/case2_mix.png" alt="Case S01 Mixture Spectrogram" class="spec-img">
+                            <audio controls src="audio/case2_mix.wav" preload="metadata"></audio>
+                        </div>
+                        <div class="audio-card">
+                            <span class="audio-label">Reference Cue</span>
+                            <img src="images/case2_cue.png" alt="Case S01 Enrollment Spectrogram" class="spec-img">
+                            <audio controls src="audio/case2_cue.wav" preload="metadata"></audio>
+                        </div>
+                        <div class="audio-card">
+                            <span class="audio-label">Discriminative Baseline (Discriminative)</span>
+                            <img src="images/case2_disc.png" alt="Discriminative Baseline Output Spectrogram" class="spec-img">
+                            <audio controls src="audio/case2_disc.wav" preload="metadata"></audio>
+                        </div>
+                        <div class="audio-card highlight">
+                            <span class="audio-label">JMG-Diff (Generative)</span>
+                            <img src="images/case2_gen.png" alt="JMG-Diff Refined Spectrogram" class="spec-img">
+                            <audio controls src="audio/case2_gen.wav" preload="metadata"></audio>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="case-divider">
+
+                <!-- Case 3: Case S21 -->
+                <div class="case-block">
+                    <div class="case-header-bar">
+                        <h3>3. Case S21 (High-Overlap Real Speech)</h3>
+                        <span class="case-badge">Real Speech</span>
+                    </div>
+                    <p class="case-desc-text">Real overlapping recording environment. The extracted output spectrogram highlights the recovery of fine high-frequency vocal structures.</p>
+                    
+                    <div class="audio-grid">
+                        <div class="audio-card">
+                            <span class="audio-label">Mixture Input</span>
+                            <img src="images/case3_mix.png" alt="Case S21 Mixture Spectrogram" class="spec-img">
+                            <audio controls src="audio/case3_mix.wav" preload="metadata"></audio>
+                        </div>
+                        <div class="audio-card">
+                            <span class="audio-label">Reference Cue</span>
+                            <img src="images/case3_cue.png" alt="Case S21 Enrollment Spectrogram" class="spec-img">
+                            <audio controls src="audio/case3_cue.wav" preload="metadata"></audio>
+                        </div>
+                        <div class="audio-card">
+                            <span class="audio-label">Discriminative Baseline (Discriminative)</span>
+                            <img src="images/case3_disc.png" alt="Discriminative Baseline Output Spectrogram" class="spec-img">
+                            <audio controls src="audio/case3_disc.wav" preload="metadata"></audio>
+                        </div>
+                        <div class="audio-card highlight">
+                            <span class="audio-label">JMG-Diff (Generative)</span>
+                            <img src="images/case3_gen.png" alt="JMG-Diff Refined Spectrogram" class="spec-img">
+                            <audio controls src="audio/case3_gen.wav" preload="metadata"></audio>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="case-divider">
+
+                <!-- Case 4: Case M22 Hindi -->
+                <div class="case-block">
+                    <div class="case-header-bar">
+                        <h3>4. Case M22 (Hindi Multi-Speaker)</h3>
+                        <span class="case-badge text-green">Cross-Lingual</span>
+                    </div>
+                    <p class="case-desc-text">Testing generalizability in non-English speech. The target speaker's Hindi speech is successfully isolated utilizing the enrollment guide.</p>
+                    
+                    <div class="audio-grid">
+                        <div class="audio-card">
+                            <span class="audio-label">Mixture Input</span>
+                            <img src="images/case4_mix.png" alt="Case M22 Mixture Spectrogram" class="spec-img">
+                            <audio controls src="audio/case4_mix.wav" preload="metadata"></audio>
+                        </div>
+                        <div class="audio-card">
+                            <span class="audio-label">Reference Cue</span>
+                            <img src="images/case4_cue.png" alt="Case M22 Enrollment Spectrogram" class="spec-img">
+                            <audio controls src="audio/case4_cue.wav" preload="metadata"></audio>
+                        </div>
+                        <div class="audio-card">
+                            <span class="audio-label">Discriminative Baseline (Discriminative)</span>
+                            <img src="images/case4_disc.png" alt="Discriminative Baseline Output Spectrogram" class="spec-img">
+                            <audio controls src="audio/case4_disc.wav" preload="metadata"></audio>
+                        </div>
+                        <div class="audio-card highlight">
+                            <span class="audio-label">JMG-Diff (Generative)</span>
+                            <img src="images/case4_gen.png" alt="JMG-Diff Refined Spectrogram" class="spec-img">
+                            <audio controls src="audio/case4_gen.wav" preload="metadata"></audio>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="case-divider">
+
+                <!-- Case 5: Case S-Series -->
+                <div class="case-block">
+                    <div class="case-header-bar">
+                        <h3>5. Case S-Series (Conversational Speech)</h3>
+                        <span class="case-badge">Real Speech</span>
+                    </div>
+                    <p class="case-desc-text">Demonstrates speaker preservation quality on complex conversational speech with level shifts.</p>
+                    
+                    <div class="audio-grid">
+                        <div class="audio-card">
+                            <span class="audio-label">Mixture Input</span>
+                            <img src="images/case5_mix.png" alt="S-Series Mixture Spectrogram" class="spec-img">
+                            <audio controls src="audio/case5_mix.wav" preload="metadata"></audio>
+                        </div>
+                        <div class="audio-card">
+                            <span class="audio-label">Reference Cue</span>
+                            <img src="images/case5_cue.png" alt="S-Series Enrollment Spectrogram" class="spec-img">
+                            <audio controls src="audio/case5_cue.wav" preload="metadata"></audio>
+                        </div>
+                        <div class="audio-card">
+                            <span class="audio-label">Discriminative Baseline (Discriminative)</span>
+                            <img src="images/case5_disc.png" alt="Discriminative Baseline Output Spectrogram" class="spec-img">
+                            <audio controls src="audio/case5_disc.wav" preload="metadata"></audio>
+                        </div>
+                        <div class="audio-card highlight">
+                            <span class="audio-label">JMG-Diff (Generative)</span>
+                            <img src="images/case5_gen.png" alt="JMG-Diff Refined Spectrogram" class="spec-img">
+                            <audio controls src="audio/case5_gen.wav" preload="metadata"></audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- S01 Evolutionary Journey Section -->
+        <section class="section journey-section">
+            <h2>Model Development & Evolutionary Journey (Case S01)</h2>
+            <p class="section-desc">A vertical step-by-step comparison of target speaker extraction showing how the output quality evolves from the raw mixture through baseline discriminative extraction, prior-only diffusion, masked guidance, and finally joint mixture-guided diffusion (JMG-Diff).</p>
+            
+            <div class="journey-list">
+                <!-- 1. Input Mixture -->
+                <div class="journey-item">
+                    <div class="journey-meta">
+                        <span class="journey-step">Step 1</span>
+                        <span class="journey-title">Raw Input Mixture (S01_P01_01)</span>
+                    </div>
+                    <p class="journey-desc">Overlapping speaker mixture containing target and interfering voices.</p>
+                    <div class="journey-media">
+                        <img src="images/journey_mix.png" alt="Raw Input Mixture Spectrogram" class="journey-spec">
+                        <audio controls src="audio/journey_mix.wav" preload="metadata"></audio>
+                    </div>
+                </div>
+
+                <hr class="journey-divider">
+
+                <!-- 2. Reference Cue -->
+                <div class="journey-item">
+                    <div class="journey-meta">
+                        <span class="journey-step">Step 2</span>
+                        <span class="journey-title">Auxiliary Speaker Reference Cue (Enrollment)</span>
+                    </div>
+                    <p class="journey-desc">Clean enrollment speech of the target speaker used to guide extraction.</p>
+                    <div class="journey-media">
+                        <img src="images/journey_cue.png" alt="Reference Cue Spectrogram" class="journey-spec">
+                        <audio controls src="audio/journey_cue.wav" preload="metadata"></audio>
+                    </div>
+                </div>
+
+                <hr class="journey-divider">
+
+                <!-- 3. Discriminative Baseline WHAMR! Model -->
+                <div class="journey-item">
+                    <div class="journey-meta">
+                        <span class="journey-step">Step 3</span>
+                        <span class="journey-title">Discriminative Baseline (Discriminative Baseline WHAMR! Model)</span>
+                    </div>
+                    <p class="journey-desc">Output from the Phase 1 discriminative TFGridNet model trained on WHAMR!. Shows initial separation but contains notable artifacts and residual interference.</p>
+                    <div class="journey-media">
+                        <img src="images/journey_whamr.png" alt="Discriminative Baseline WHAMR Spectrogram" class="journey-spec">
+                        <audio controls src="audio/journey_whamr.wav" preload="metadata"></audio>
+                    </div>
+                </div>
+
+                <hr class="journey-divider">
+
+                <!-- 4. Prior Only Diffusion -->
+                <div class="journey-item">
+                    <div class="journey-meta">
+                        <span class="journey-step">Step 4</span>
+                        <span class="journey-title">Generative Refinement: Prior Only Diffusion</span>
+                    </div>
+                    <p class="journey-desc">Diffusion posterior sampling using only the prior score. Speech sounds natural but lacks correspondence to the target speaker's phonetics, leading to hallucination.</p>
+                    <div class="journey-media">
+                        <img src="images/journey_prior.png" alt="Prior Only Diffusion Spectrogram" class="journey-spec">
+                        <audio controls src="audio/journey_prior.wav" preload="metadata"></audio>
+                    </div>
+                </div>
+
+                <hr class="journey-divider">
+
+                <!-- 5. Masked Guidance -->
+                <div class="journey-item">
+                    <div class="journey-meta">
+                        <span class="journey-step">Step 5</span>
+                        <span class="journey-title">Generative Refinement: Masked Guidance</span>
+                    </div>
+                    <p class="journey-desc">Adds a reconstructed speech loss constraint (masked by speech energy). Prevents target hallucinations but introduces some background noise leak in silent regions.</p>
+                    <div class="journey-media">
+                        <img src="images/journey_masked.png" alt="Masked Guidance Spectrogram" class="journey-spec">
+                        <audio controls src="audio/journey_masked.wav" preload="metadata"></audio>
+                    </div>
+                </div>
+
+                <hr class="journey-divider">
+
+                <!-- 6. Joint Mixture-Guided (JMG-Diff) -->
+                <div class="journey-item highlight-journey">
+                    <div class="journey-meta">
+                        <span class="journey-step">Step 6 (Final)</span>
+                        <span class="journey-title">Joint Mixture-Guided Refinement (JMG-Diff)</span>
+                    </div>
+                    <p class="journey-desc">Our proposed full dual-guidance pipeline. Combines speech energy mask matching with mixture-consistency loss, achieving artifact-free speech separation and optimal similarity.</p>
+                    <div class="journey-media">
+                        <img src="images/journey_guided.png" alt="JMG-Diff Joint Mixture-Guided Spectrogram" class="journey-spec">
+                        <audio controls src="audio/journey_guided.wav" preload="metadata"></audio>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Evaluation Results Section -->
+        <section class="section results-section">
+            <h2>Quantitative Evaluation</h2>
+            <p>Comparative metrics evaluating extraction accuracy and signal fidelity. Standard metrics like Scale-Invariant Signal-to-Noise Ratio (SI-SNR) and Perceptual Evaluation of Speech Quality (PESQ) indicate significant speech preservation improvements.</p>
+            
+            <div class="table-container">
+                <table class="metrics-table">
+                    <thead>
+                        <tr>
+                            <th>Evaluation Stage</th>
+                            <th>SDR (dB) &uarr;</th>
+                            <th>SI-SNR (dB) &uarr;</th>
+                            <th>PESQ &uarr;</th>
+                            <th>ESTOI &uarr;</th>
+                            <th>SIM &uarr;</th>
+                            <th>WER (%) &darr;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1. Input Mixture (Baseline)</td>
+                            <td>0.12</td>
+                            <td>0.08</td>
+                            <td>1.42</td>
+                            <td>0.458</td>
+                            <td>0.612</td>
+                            <td>78.4</td>
+                        </tr>
+                        <tr>
+                            <td>2. Discriminative Baseline (Discriminative Stage)</td>
+                            <td>12.84</td>
+                            <td>12.15</td>
+                            <td>2.89</td>
+                            <td>0.824</td>
+                            <td>0.895</td>
+                            <td>18.2</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>3. JMG-Diff (Generative Refinement)</td>
+                            <td>14.12</td>
+                            <td>13.68</td>
+                            <td>3.15</td>
+                            <td>0.872</td>
+                            <td>0.924</td>
+                            <td>12.4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-legend">
+                <small>* <strong>SDR / SI-SNR</strong>: Signal Distortion/Noise Ratio (higher is better). <strong>PESQ</strong>: Perceptual Speech Quality (scale 1-4.5). <strong>SIM</strong>: Speaker similarity. <strong>WER</strong>: Word Error Rate from automatic transcription (lower is better).</small>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Aayush Prajapati. JMG-Diff Project.</p>
+            <p class="footer-subtext font-mono">Built for GitHub Pages showcase demonstration</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
