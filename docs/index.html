@@ -338,54 +338,117 @@
         <!-- Evaluation Results Section -->
         <section class="section results-section">
             <h2>Quantitative Evaluation</h2>
-            <p>Comparative metrics evaluating extraction accuracy and signal fidelity. Standard metrics like Scale-Invariant Signal-to-Noise Ratio (SI-SNR) and Perceptual Evaluation of Speech Quality (PESQ) indicate significant speech preservation improvements.</p>
+            <p>Comparative metrics evaluating extraction accuracy and signal fidelity on the Libri2Mix benchmark. JMG-Diff successfully bridges the gap between intelligibility and naturalness, achieving optimal perceptual audio quality (DNSMOS) and Joint Quality-Identity Index (Q<sub>joint</sub>).</p>
             
+            <h3 style="margin-top: 2rem; margin-bottom: 0.5rem; text-align: center;">Table I: Performance Comparison</h3>
             <div class="table-container">
                 <table class="metrics-table">
                     <thead>
                         <tr>
-                            <th>Evaluation Stage</th>
-                            <th>SDR (dB) &uarr;</th>
+                            <th>Model</th>
                             <th>SI-SNR (dB) &uarr;</th>
-                            <th>PESQ &uarr;</th>
-                            <th>ESTOI &uarr;</th>
+                            <th>DNSMOS &uarr;</th>
                             <th>SIM &uarr;</th>
                             <th>WER (%) &darr;</th>
+                            <th>Q<sub>joint</sub> &uarr;</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1. Input Mixture (Baseline)</td>
-                            <td>0.12</td>
-                            <td>0.08</td>
-                            <td>1.42</td>
-                            <td>0.458</td>
-                            <td>0.612</td>
-                            <td>78.4</td>
+                            <td>USEF-TSE (TF-GridNet)</td>
+                            <td>10.75</td>
+                            <td>3.08</td>
+                            <td>0.980</td>
+                            <td>2.99</td>
+                            <td>3.02</td>
                         </tr>
                         <tr>
-                            <td>2. USEF-TSE (Discriminative Stage)</td>
-                            <td>12.84</td>
-                            <td>12.15</td>
-                            <td>2.89</td>
-                            <td>0.824</td>
-                            <td>0.895</td>
-                            <td>18.2</td>
+                            <td>SOLOSPEECH</td>
+                            <td>9.23</td>
+                            <td>3.75</td>
+                            <td>0.954</td>
+                            <td>1.54</td>
+                            <td>3.58</td>
+                        </tr>
+                        <tr>
+                            <td>ArrayDPS-A</td>
+                            <td><strong>15.80</strong></td>
+                            <td>3.38</td>
+                            <td>0.865</td>
+                            <td>&ndash;</td>
+                            <td>2.92</td>
                         </tr>
                         <tr class="highlight-row">
-                            <td>3. JMG-Diff (Generative Refinement)</td>
-                            <td>14.12</td>
-                            <td>13.68</td>
-                            <td>3.15</td>
-                            <td>0.872</td>
-                            <td>0.924</td>
-                            <td>12.4</td>
+                            <td>JMG-Diff (Proposed)</td>
+                            <td>11.28</td>
+                            <td><strong>3.78</strong></td>
+                            <td>0.975</td>
+                            <td>5.84</td>
+                            <td><strong>3.69</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 0.5rem; text-align: center;">Table II: Ablation Study</h3>
+            <div class="table-container">
+                <table class="metrics-table">
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>SI-SNR &uarr;</th>
+                            <th>DNSMOS &uarr;</th>
+                            <th>SIM &uarr;</th>
+                            <th>WER &darr;</th>
+                            <th>Q<sub>joint</sub> &uarr;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Discriminative</td>
+                            <td>10.75</td>
+                            <td>3.08</td>
+                            <td><strong>0.980</strong></td>
+                            <td><strong>2.99%</strong></td>
+                            <td>3.02</td>
+                        </tr>
+                        <tr>
+                            <td>Prior-Only</td>
+                            <td>4.13</td>
+                            <td>2.82</td>
+                            <td>0.850</td>
+                            <td>174.0%</td>
+                            <td>2.40</td>
+                        </tr>
+                        <tr>
+                            <td>Standard DPS</td>
+                            <td>-7.68</td>
+                            <td>2.01</td>
+                            <td>0.690</td>
+                            <td>149.8%</td>
+                            <td>1.39</td>
+                        </tr>
+                        <tr>
+                            <td>Masked DPS (Ours)</td>
+                            <td><strong>11.51</strong></td>
+                            <td>3.30</td>
+                            <td>0.970</td>
+                            <td>7.78%</td>
+                            <td>3.20</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>JMG-Diff (Ours)</td>
+                            <td>11.28</td>
+                            <td><strong>3.78</strong></td>
+                            <td>0.975</td>
+                            <td>5.84%</td>
+                            <td><strong>3.69</strong></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div class="table-legend">
-                <small>* <strong>SDR / SI-SNR</strong>: Signal Distortion/Noise Ratio (higher is better). <strong>PESQ</strong>: Perceptual Speech Quality (scale 1-4.5). <strong>SIM</strong>: Speaker similarity. <strong>WER</strong>: Word Error Rate from automatic transcription (lower is better).</small>
+                <small>* <strong>SI-SNR</strong>: Scale-Invariant Signal-to-Noise Ratio. <strong>DNSMOS</strong>: Deep Noise Suppression Mean Opinion Score. <strong>SIM</strong>: Speaker similarity. <strong>WER</strong>: Word Error Rate. <strong>Q<sub>joint</sub></strong>: DNSMOS &times; SIM.</small>
             </div>
         </section>
     </main>
