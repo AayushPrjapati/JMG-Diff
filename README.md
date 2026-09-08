@@ -1,7 +1,7 @@
 <h1 align="center">Joint Mixture-Guided Diffusion for Target Speech Extraction (TSE)</h1>
 
 <p align="center">
-  <a href="https://colab.research.google.com/github/AayushPrjapati/DPS-TSE/blob/main/demo.ipynb">💻 Colab Demo</a>
+  <a href="https://colab.research.google.com/github/AayushPrjapati/JMG-Diff/blob/main/demo.ipynb">💻 Colab Demo</a>
 </p>
 
 This repository contains the code for **Joint Mixture Guidance (V1)**, a training-free hybrid framework for Target Speech Extraction (TSE). 
