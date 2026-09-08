@@ -1,4 +1,4 @@
-<h1 align="center">Joint Mixture-Guided Diffusion for Target Speech Extraction (TSE)</h1>
+<h1 align="center">JMG-Diff: Generative Refinement for Target Speech Extraction using Joint Mixture-Guided Diffusion Priors</h1>
 
 <p align="center">
   <a href="https://colab.research.google.com/github/AayushPrjapati/DPS-TSE/blob/main/demo.ipynb">💻 Colab Demo</a>
@@ -82,8 +82,8 @@ Here is what we tried, step-by-step, before arriving at the final V1 framework:
 
 ### 1. Clone & Install
 ```bash
-git clone https://github.com/AayushPrjapati/DPS-TSE.git
-cd DPS-TSE
+git clone https://github.com/AayushPrjapati/JMG-Diff.git
+cd JMG-Diff
 pip install -r requirements.txt
 ```
 
